@@ -95,7 +95,7 @@ class Authentification extends CI_Controller
 		$this->load->view('parts/footer');
 	}
 
-	function cookie($email)
+	public function cookie($email)
 	{
 		$userEmail = explode("@", $email);
 		$value = $userEmail[0];
@@ -150,7 +150,8 @@ class Authentification extends CI_Controller
 			$this->index();
 		} else {
 //			$token = $result;
-			$this->authValide();
+			redirect('Home');
+//			$this->authValide();
 		}
 
 	}
