@@ -59,9 +59,9 @@ $domain = strtolower($_SERVER['HTTP_HOST']); // On récupère l'url
 
 if (strpos($domain, 'localhost') !== false || strpos($domain, '127.0.0.1') !== false) {
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'testing'); // On SET la variable d'environnement correspondant, ici pour le serveur local
-} else if (strpos($domain) !== false) {
+} else if (strpos($domain,'localhost') !== false) {
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'server1'); // Ici pour le serveur de dev
-} else if (strpos($domain) !== false) {
+} else if (strpos($domain, 'localhost') !== false) {
 	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'server2'); // Ici pour le serveur de prod
 }
 
