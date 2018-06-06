@@ -108,6 +108,16 @@ class Authentification extends CI_Controller
 		set_cookie($cookie);
 	}
 
+	public function token($token) {
+		$cookie = array(
+			'name' => 'token',
+			'value' => $token,
+			'expire' => 86500,
+		);
+
+		set_cookie($cookie);
+	}
+
 	/**
 	 * authentification par mail
 	 */
@@ -147,9 +157,13 @@ class Authentification extends CI_Controller
 		if ($result === "") {
 			$message = 'Failed login';
 			$this->flash->error($message);
-			$this->index();
 		} else {
-//			$token = $result;
+			$json = $result;
+			$jsonDecode = json_decode($json, true);
+			$token = $jsonDecode['token'];
+			$this->token($token);
+			$message = 'Welcome';
+			$this->flash->success($message);
 			redirect('Home');
 //			$this->authValide();
 		}
@@ -178,6 +192,7 @@ class Authentification extends CI_Controller
 	function logOut()
 	{
 		delete_cookie('auth');
+		delete_cookie('token');
 		$this->index();
 	}
 }

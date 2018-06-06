@@ -32,12 +32,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		});
 	</script>
 	<script type="text/javascript" src="<?php echo assets_url(); ?>js/authentification.js"></script>
+	<script type="text/javascript" src="<?php echo assets_url(); ?>js/navbar.js"></script>
+	<script type="text/javascript" src="<?php echo assets_url(); ?>js/main.js"></script>
 </head>
 <body>
 <script>
-	$(document).ready(function() {
-		$.ajaxSetup({ cache: true });
-		$.getScript('https://connect.facebook.net/en_US/sdk.js', function(){
+	$(document).ready(function () {
+		$.ajaxSetup({cache: true});
+		$.getScript('https://connect.facebook.net/en_US/sdk.js', function () {
 			FB.init({
 				appId: '1691574820928365',
 				version: 'v2.7' // or v2.1, v2.2, v2.3, ...
