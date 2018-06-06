@@ -53,19 +53,7 @@
  *
  * NOTE: If you change these, also change the error_reporting() code below
  */
-include_once './vendor/autoload.php';
-
-$domain = strtolower($_SERVER['HTTP_HOST']); // On récupère l'url
-
-echo $domain;
-
-if (strpos($domain, 'localhost') !== false || strpos($domain, '127.0.0.1') !== false) {
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'testing'); // On SET la variable d'environnement correspondant, ici pour le serveur local
-} else if ($domain === 'http://192.168.1.9/supfile') {
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'server1'); // Ici pour le serveur de dev
-} else if ($domain === 'http://192.168.1.3/supfile') {
-	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'server2'); // Ici pour le serveur de prod
-}
+	define('ENVIRONMENT', isset($_SERVER['CI_ENV']) ? $_SERVER['CI_ENV'] : 'development');
 
 /*
  *---------------------------------------------------------------
