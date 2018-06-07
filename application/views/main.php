@@ -9,7 +9,7 @@
 			<button class="btn btn-secondary" type="button" id="addDirectory">New folder</button>
 		</div>
 		<div class="col-md-9">
-			<h3>contenu</h3>
+			<h3>My files</h3>
 		</div>
 	</div>
 	<div class="col-md-12">

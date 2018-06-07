@@ -83,7 +83,7 @@ class Home extends CI_Controller
 		//Fermer la session
 		curl_close($request);
 
-		$message = 'Importation du fichier ' . $data['orig_name'] . ' réussie';
+		$message = 'File ' . $data['orig_name'] . ' uploaded';
 		$this->flash->success($message);
 
 	}
