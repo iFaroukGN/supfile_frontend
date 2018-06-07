@@ -27,8 +27,16 @@ class Home extends CI_Controller
 		$this->load->view('parts/footer');
 	}
 
+	/**
+	 * Charger un fichier,
+	 * Nimporte quel type de fichier
+	 *
+	 */
 	public function uploadFile()
 	{
+		//API url
+		$url = "http://localhost:8080/resource/upload";
+
 		$fichier = 'file';
 
 		$config['upload_path'] = './temp/';
@@ -38,30 +46,23 @@ class Home extends CI_Controller
 
 		$this->load->library('upload', $config);
 		if (!$this->upload->do_upload($fichier)) {
-			print_r('ne charge pas');
+			$message = 'Upload failed';
+			$this->flash->error($message);
 		} else {
 			$data = $this->upload->data();
-//			print_r($data);
 		}
 
-		$url = "http://localhost:8080/resource/upload";
-
-		// initialise the curl request
-
+		//token pour les appels API
 		$token = get_cookie('token');
 
-//		print_r($data);
-
-// send a file
-
+		//initialiser une requete CURL
 		$request = curl_init($url);
 
-//
+		// creer un objet CURLFile avec en parametre le fichier chargé
 		$cfile = new CURLFile($data['full_path'], $data['file_type'], $data['orig_name']);
 		$datafile = array('file' => $cfile);
 
-//		print_r($token);
-
+		//header de la requete
 		curl_setopt($request, CURLOPT_HTTPHEADER, array(
 			'Authorization: Bearer ' . $token,
 			'Content-Type: multipart/form-data'
@@ -74,16 +75,15 @@ class Home extends CI_Controller
 			CURLOPT_POSTFIELDS,
 			$datafile);
 
-// output the response
 		curl_setopt($request, CURLOPT_RETURNTRANSFER, true);
 
-//		print_r($token);
+		//executer la requete
 		curl_exec($request);
 
-// close the session
+		//Fermer la session
 		curl_close($request);
 
-		$message = 'Importation du fichier ' .$data['orig_name'] . ' réussie';
+		$message = 'Importation du fichier ' . $data['orig_name'] . ' réussie';
 		$this->flash->success($message);
 
 	}

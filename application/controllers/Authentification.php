@@ -95,6 +95,10 @@ class Authentification extends CI_Controller
 		$this->load->view('parts/footer');
 	}
 
+	/**
+	 * Enregistrer le nom d'utilisateur en cookies
+	 * @param $email
+	 */
 	public function cookie($email)
 	{
 		$userEmail = explode("@", $email);
@@ -108,6 +112,11 @@ class Authentification extends CI_Controller
 		set_cookie($cookie);
 	}
 
+	/**
+	 * Enregistrer le token dans les cookies
+	 * Le token permettra d'attaquer les fonctionnalites de l'API autre que l'inscription et l'authentification
+	 * @param $token
+	 */
 	public function token($token) {
 		$cookie = array(
 			'name' => 'token',
@@ -154,6 +163,8 @@ class Authentification extends CI_Controller
 
 		curl_close($ch);
 
+		//renvoie l'utilisateur a la page d'authentification avec un message d'erreur d'autentification sinon passe
+		//a la page d'accueil
 		if ($result === "") {
 			$message = 'Failed login';
 			$this->flash->error($message);
@@ -188,6 +199,7 @@ class Authentification extends CI_Controller
 
 	/**
 	 * deconnecter un utilisateur
+	 * supprimer les cookies
 	 */
 	function logOut()
 	{
