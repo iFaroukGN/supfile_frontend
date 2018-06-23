@@ -87,4 +87,47 @@ class Home extends CI_Controller
 		$this->flash->success($message);
 
 	}
+
+	public function createFolder() {
+
+		$url = "http://localhost:8080/resource/folders";
+
+		$data = array(
+			'name' => $this->input->post('name')
+		);
+
+		$token = get_cookie('token');
+
+		//initialiser cUrl
+		$ch = curl_init($url);
+
+		//header de la requete
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Authorization: Bearer ' . $token,
+			'Content-Type: application/json'
+		));
+
+		//encoder la donnee
+		$jsonData = json_encode($data);
+
+		//seter type de requete: POST
+		curl_setopt($ch, CURLOPT_POST, 1);
+
+		//Attach our encoded JSON string to the POST fields.
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		//Execute the request
+		$result = curl_exec($ch);
+
+		curl_close($ch);
+
+		$message = 'Folder ' . $data['name'] . ' created';
+		$this->flash->success($message);
+
+
+	}
 }

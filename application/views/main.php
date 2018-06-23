@@ -6,7 +6,7 @@
 	<div class="col-md-12 row">
 		<div class="col-md-3">
 			<button class="btn btn-secondary" type="button" id="addFile">New file</button>
-			<button class="btn btn-secondary" type="button" id="addDirectory">New folder</button>
+			<button class="btn btn-secondary" type="button" id="addDirectory" data-toggle="modal" data-target="#createFolder">New folder</button>
 		</div>
 		<div class="col-md-9">
 			<h3>My files</h3>
@@ -38,6 +38,33 @@
 									</div>
 								</div>
 								<?php echo form_close(); ?>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="modal" tabindex="-1" role="dialog" id="createFolder">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title form-signin-heading">Create a folder</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-md-12">
+								<form class="form-signin" method="post" accept-charset="utf-8" action="<?php echo base_url()?>index.php/Home/createFolder">
+									<label for="name" class="sr-only">Email address</label>
+									<input id="name" class="form-control" placeholder="Folder name"
+										   required="" autofocus="" type="text" name="name">
+									<p class="espace"></p>
+									<button class="btn btn-lg btn-primary btn-block" type="submit" id="folderName">Create</button>
+								</form>
 							</div>
 						</div>
 					</div>
