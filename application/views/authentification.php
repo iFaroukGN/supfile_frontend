@@ -100,6 +100,35 @@
 	</div>
 </div>
 <div class="col-md-12">
+	<div class="modal" tabindex="-1" role="dialog" id="rgpd">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h6 class="modal-title form-signin-heading">The new European data protection law requires us to
+						inform you of the following before you use our website: </h6>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body col-md-12">
+					<p>We use cookies and other technologies to customize your experience, perform analytics and
+						deliver personalized advertising on our sites, apps and newsletters and across the Internet
+						based on your interests. By clicking “I agree” below, you consent to the use by us and our
+						third-party partners of cookies and data gathered from your use of our platforms.
+						See our Privacy Policy and Third Party Partners to learn more about the use of data and your
+						rights. You also agree to our Terms of Service. </p>
+					<div class="col-md-12 center">
+							<input class="checkbox" id="agree" type="checkbox">
+							<label class="agree-lbl" for="agree">I agree </label>
+							<button onclick="clickRgpd()" class="btn btn-success">Continue to site</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="col-md-12">
 	<div class="modal" tabindex="-1" role="dialog" id="signIn">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">

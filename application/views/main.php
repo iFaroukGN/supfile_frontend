@@ -61,7 +61,7 @@
 								<form class="form-signin" method="post" accept-charset="utf-8" action="<?php echo base_url()?>index.php/Home/createFolder">
 									<label for="name" class="sr-only">Email address</label>
 									<input id="name" class="form-control" placeholder="Folder name"
-										   required="" autofocus="" type="text" name="name">
+										   required="" type="text" name="name" autofocus>
 									<p class="espace"></p>
 									<button class="btn btn-lg btn-primary btn-block" type="submit" id="folderName">Create</button>
 								</form>

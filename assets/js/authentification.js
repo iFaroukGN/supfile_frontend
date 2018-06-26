@@ -1,6 +1,6 @@
-// $(window).on('load', function () {
-// 	$('#signIn').modal('show');
-// });
+$(window).on('load', function () {
+	$('#rgpd').modal('show');
+});
 
 $(document).ready(function () {
 	$('#signInButton').on('click', function () {
@@ -11,3 +11,7 @@ $(document).ready(function () {
 		$('#signUp').modal('show');
 	});
 });
+
+function clickRgpd() {
+	$('#rgpd').modal('hide');
+}
