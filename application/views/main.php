@@ -9,7 +9,20 @@
 			<button class="btn btn-secondary" type="button" id="addDirectory" data-toggle="modal" data-target="#createFolder">New folder</button>
 		</div>
 		<div class="col-md-9">
-			<h3>My files</h3>
+			<h3>My documents</h3>
+			<table>
+				<?php foreach($resources as $resource): ?>
+					<tr>
+						<?php if ($resource['type'] === "FILER") {?>
+<!--							href="file:////Users/cedde/supfile/1/img.png"-->
+						<td><img src="<?php echo base_url()?>/assets/img/file.png"> <a href="<?php echo base_url()?>index.php/home/download" target="_blank"><?php echo $resource['name']; ?></a></td>
+						<?php } else {?>
+						<td><img src="<?php echo base_url()?>/assets/img/folder.png"> <?php echo $resource['name']; ?></td>
+						<?php }?>
+					</tr>
+				<?php endforeach; ?>
+			</table>
+
 		</div>
 	</div>
 	<div class="col-md-12">

@@ -274,7 +274,7 @@
 											   required="" autofocus="" type="email" name="emailSignUp">
 										<label for="inputPassword" class="sr-only">Password</label>
 										<input id="inputPassword" class="form-control" placeholder="Password"
-											   required="" type="password" name="passwordSignUp">
+											   required="" type="password" name="passwordSignUp" pattern=".{12,}" >
 										<p class="espace"></p>
 										<div class="checkbox">
 											<label>
